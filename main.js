@@ -10,8 +10,10 @@ $(document).ready(function() {
         var minutes = currentTime.getMinutes()
         var seconds = currentTime.getSeconds()
         var clockDiv = document.getElementById()
+
+        clockDiv.innerText = hours + ":" + minutes + ":" + seconds;
     }
 
-
+    displayTime();
 
 });
