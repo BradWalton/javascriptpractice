@@ -13,9 +13,15 @@ $(document).ready( function() {
 
         var clockDiv = document.getElementById('clock');
 
-        clockDiv.innerText = hours + ":" + minutes + ":" + seconds;
+        clockDiv.innerText = hours + ":" + minutes + ":" + seconds + "";
+
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        };
     }
 
     displayTime();
+
+    setInterval(displayTime, 1000);
 
 });
