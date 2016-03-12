@@ -17,11 +17,7 @@ var height = 650;
 canvas.width= width;
 canvas.height= height;
 var context= canvas.getContext('2d');
-
-window.onload = function() {
-    document.body.appendChild(canvas);
-    animate(step);
-};
+var ball = new Ball(200, 300);
 
 window.onload = function() {
     document.body.appendChild(canvas);
@@ -34,17 +30,28 @@ var step = function() {
     animate(step);
 };
 
+var render = function() {
+    context.fillStyle = "#81F7F3";
+    context.fillRect(0, 0, width, height);
+    ball.render();
+};
+
 var update = function() {
 };
 
-var render = function() {
-    context.fillRect(0, 0, width, height);
-    var y = this.height
+//Making the Rocket
 
-    if(y <= 300){
-        context.fillStyle = "#81F7F3";
-    }
-    else{
-        context.fillStyle = "black"
-    }
+function Ball(x, y) {
+    this.x = x;
+    this.y = y;
+    this.x_speed = 0;
+    this.y_speed = 3;
+    this.radius = 5;
+}
+
+Ball.prototype.render = function() {
+    context.beginPath();
+    context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
+    context.fillStyle = "#000000";
+    context.fill();
 };
